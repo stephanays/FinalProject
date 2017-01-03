@@ -38,5 +38,14 @@ public class Product{
 	purchasePrice = price;
     }
 
+    public static void main(String[]args){
+	Product a = new Product("Pizza",3, 5);
+	System.out.println(a.getName());
+	System.out.println(a.getID());
+	System.out.println(a.getSellPrice());
+	System.out.println(a.getPurchasePrice());
+	a.setQuantity(8);
+	System.out.println(a.getQuantity());
+    }
 
 }
