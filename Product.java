@@ -9,7 +9,7 @@ public class Product{
 	name = inputName;
 	sellPrice = inputSell;
 	purchasePrice = inputPurchase;
-	id = 1; //CHANGE THIS ONCE INVENTORY IS CODED
+	id = (Account.getInventory().length)+1; 
     }
 
     public int getID (){
