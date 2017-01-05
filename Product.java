@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Product{
     private int id;
     private String name;
@@ -9,7 +11,7 @@ public class Product{
 	name = inputName;
 	sellPrice = inputSell;
 	purchasePrice = inputPurchase;
-	id = (Account.getInventory().length)+1; 
+	id = (Account.getInventory().size())+1; 
     }
 
     public int getID (){
