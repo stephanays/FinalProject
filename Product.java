@@ -7,11 +7,11 @@ public class Product{
     private double sellPrice;
     private double purchasePrice;
 
-    public Product (String inputName, double inputSell, double inputPurchase, int inputID){
+    public Product (String inputName, double inputSell, double inputPurchase){
 	name = inputName;
 	sellPrice = inputSell;
-	purchasePrice = inputPurchase;
-	id = inputID; 
+	id = (Account.getInventory().length)+1; 
+
     }
 
     public int getID (){
