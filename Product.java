@@ -4,14 +4,14 @@ public class Product{
     private int id;
     private String name;
     private int quantity;
-    private int sellPrice;
-    private int purchasePrice;
+    private double sellPrice;
+    private double purchasePrice;
 
-    public Product (String inputName, int inputSell, int inputPurchase){
+    public Product (String inputName, double inputSell, double inputPurchase, int inputID){
 	name = inputName;
 	sellPrice = inputSell;
 	purchasePrice = inputPurchase;
-	id = (Account.getInventory().size())+1; 
+	id = inputID; 
     }
 
     public int getID (){
