@@ -10,6 +10,7 @@ public class Product{
     public Product (String inputName, double inputSell, double inputPurchase, int inputID){
 	name = inputName;
 	sellPrice = inputSell;
+	purchasePrice = inputPurchase;
 	id = inputID; 
 
     }
@@ -23,10 +24,10 @@ public class Product{
     public int getQuantity(){
 	return quantity;
     }
-    public int getSellPrice(){
+    public double getSellPrice(){
 	return sellPrice;
     }
-    public int getPurchasePrice(){
+    public double getPurchasePrice(){
 	return purchasePrice;
     }
 
@@ -38,6 +39,10 @@ public class Product{
     }
     public void setPurchasePrice(int price){
 	purchasePrice = price;
+    }
+
+    public String toString(){
+	return id + ", " + name + ", " + sellPrice + ", " + purchasePrice;
     }
 
 
