@@ -20,27 +20,42 @@ public class FinalProject extends JFrame{
 		    return size;
                                   		}
 	    };
-	homePage.add(new JLabel("Welcome Stranger!"));
+	JLabel greetLabel=new JLabel("Welcome Stranger!");
+	homePage.add(greetLabel);
 
 	JPanel manageInventory=new JPanel();
-	manageInventory.add(new JButton("Add Product"));   
-	manageInventory.add(new JButton("Remove Product"));
+	JButton addProduct=new JButton("Add Product");
+	JButton removeProduct=new JButton("Remove Product");
+	manageInventory.add(addProduct);   
+	manageInventory.add(removeProduct);
 
 	JPanel saleOrders=new JPanel(new GridLayout(0,1));
-	saleOrders.add(new JLabel("Product ID: "));
-	saleOrders.add(new JTextField("",15));
-	saleOrders.add(new JLabel("Quantity: "));
-	saleOrders.add(new JTextField("",15));
-	saleOrders.add(new JButton("Submit"));
+	JLabel productIDLabelSale=new JLabel("Product ID: ");
+	JTextField productIDSale=new JTextField("",15);
+	JLabel quantityLabelSale=new JLabel("Quantity: ");
+	JTextField quantitySale=new JTextField("",15);
+	JButton submitSale=new JButton("Submit");
+	saleOrders.add(productIDLabelSale);
+	saleOrders.add(productIDSale);
+	saleOrders.add(quantityLabelSale);
+	saleOrders.add(quantitySale);
+	saleOrders.add(submitSale);
 
 	JPanel restockOrders=new JPanel(new GridLayout(0,1));
-	restockOrders.add(new JLabel("Product ID: "));
-	restockOrders.add(new JTextField("",15));
-	restockOrders.add(new JLabel("Quantity: "));
-	restockOrders.add(new JTextField("",15));
-	restockOrders.add(new JLabel("Buy Price: "));
-	restockOrders.add(new JTextField("",15));
-	restockOrders.add(new JButton("Submit"));
+	JLabel productIDLabelRestock=new JLabel("Product ID: ");
+	JTextField productIDRestock=new JTextField("",15);
+	JLabel quantityLabelRestock=new JLabel("Quantity: ");
+	JTextField quantityRestock=new JTextField("",15);
+	JLabel buyPriceLabelRestock=new JLabel("Buy Price: ");
+	JTextField buyPriceRestock=new JTextField("",15);
+	JButton submitRestock=new JButton("Submit");
+	restockOrders.add(productIDLabelRestock);
+	restockOrders.add(productIDRestock);
+	restockOrders.add(quantityLabelRestock);
+	restockOrders.add(quantityRestock);
+	restockOrders.add(buyPriceLabelRestock);
+	restockOrders.add(buyPriceRestock);
+	restockOrders.add(submitRestock);
 
 	JPanel financePage=new JPanel();
 	financePage.add(new JLabel("Under Construction"));
@@ -55,6 +70,7 @@ public class FinalProject extends JFrame{
 	pane.add(tabbedPane, BorderLayout.CENTER);
         
     }
+    
 
     private static void createAndShowGUI(){
 	JFrame frame=new JFrame("Inventory Management System");
