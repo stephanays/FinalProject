@@ -1,15 +1,18 @@
+import java.util.ArrayList;
+
 public class Product{
     private int id;
     private String name;
     private int quantity;
-    private int sellPrice;
-    private int purchasePrice;
+    private double sellPrice;
+    private double purchasePrice;
 
-    public Product (String inputName, int inputSell, int inputPurchase){
+    public Product (String inputName, double inputSell, double inputPurchase, int inputID){
 	name = inputName;
 	sellPrice = inputSell;
 	purchasePrice = inputPurchase;
-	id = 1; //CHANGE THIS ONCE INVENTORY IS CODED
+	id = inputID; 
+
     }
 
     public int getID (){
@@ -21,10 +24,10 @@ public class Product{
     public int getQuantity(){
 	return quantity;
     }
-    public int getSellPrice(){
+    public double getSellPrice(){
 	return sellPrice;
     }
-    public int getPurchasePrice(){
+    public double getPurchasePrice(){
 	return purchasePrice;
     }
 
@@ -38,6 +41,7 @@ public class Product{
 	purchasePrice = price;
     }
 
+<<<<<<< HEAD
     public static void main(String[]args){
 	Product a = new Product("Pizza",3, 5);
 	System.out.println(a.getName());
@@ -47,5 +51,11 @@ public class Product{
 	a.setQuantity(8);
 	System.out.println(a.getQuantity());
     }
+=======
+    public String toString(){
+	return id + ", " + name + ", " + sellPrice + ", " + purchasePrice;
+    }
+
+>>>>>>> Stephanie
 
 }
