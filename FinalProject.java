@@ -121,6 +121,7 @@ public class FinalProject extends JFrame implements ActionListener{
 
     public void actionPerformed(ActionEvent e){
 	String event=e.getActionCommand();
+	Account admin = new Account();
 	if(event.equals("sale")){
 	    String productIDSaleText=productIDSale.getText();
 	    String quantitySaleText=quantitySale.getText();
@@ -133,13 +134,18 @@ public class FinalProject extends JFrame implements ActionListener{
 	    resultRestock.setText("Product ID: "+productIDRestockText+"\nQuantity: "+quantityRestockText+"\nBuy Price: "+buyPriceRestockText+"\n All Done!");
 	}
 	if(event.equals("addProduct")){
-	    String productNameNewText=productNameNew.getText();
-	    String sellPriceNewText=sellPriceNew.getText();
-	    String purchasePriceNewText=purchasePriceNew.getText();
+	    String productNameNew=productNameNew.getText();
+	    double sellPriceNew=Double.parseDouble(sellPriceNew.getText());
+	    doube purchasePriceNew=Integer.parseDouble(purchasePriceNew.getText());
+	    Product adding = new Product(productNameNew, sellPriceNew, purchasePriceNew, admin.nextId());
+	    admin.newProduct(adding);
+   
+	    
 
 	}
 	if(event.equals("removeProduct")){
-	    String productIDTrashText=productIDTrash.getText();
+	    int productIDTrashText=Integer.parseInt(productIDTrash.getText());
+	    admin.removeProduct(admin.findProduct(productIDTrashText));
 	}
     }
 	

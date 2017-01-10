@@ -19,7 +19,8 @@ public class Account{
     public void removeProduct(Product a){
 	for (int index = 0; index < inventory.size(); index++){
 	    if(inventory.get(index).getID()==a.getID()){
-		inventory.remove(index);
+		Product null = new Product(null, 0, 0, 0);
+		inventory.set(index, null);
 	    }
 	}
     }
@@ -28,6 +29,10 @@ public class Account{
 	return getInventory().size() +1;
     }
 
+    public Product findProduct(int Id){
+	return inventory.get(Id-1);
+    }
+			     
     public String toString(){
 	String output = "";
 	for (int index = 0; index < inventory.size(); index++){
