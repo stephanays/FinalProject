@@ -10,6 +10,7 @@ public class FinalProject extends JFrame implements ActionListener{
     final static String finance="Finance";
     final static int extraWindowWidth=100;
     private JButton addProduct;
+    private JLabel orderType;
     private JButton removeProduct;
     private JTextField productIDSale;
     private JTextField quantitySale;
@@ -36,17 +37,19 @@ public class FinalProject extends JFrame implements ActionListener{
 
 	JPanel manageInventory=new JPanel();
 	addProduct=new JButton("Add Product");
+	addProduct.addActionListener(this);
+	addProduct.setActionCommand("addProduct");
 	removeProduct=new JButton("Remove Product");
+	removeProduct.addActionListener(this);
+	removeProduct.setActionCommand("removeProduct");
 	manageInventory.add(addProduct);   
 	manageInventory.add(removeProduct);
 
 	JPanel saleOrders=new JPanel(new GridLayout(0,1));
 	JLabel productIDLabelSale=new JLabel("Product ID: ");
-	productIDSale=new JTextField("",15);
-	productIDSale.addActionListener(this);
+	productIDSale=new JTextField("",15);;
 	JLabel quantityLabelSale=new JLabel("Quantity: ");
 	quantitySale=new JTextField("",15);
-	quantitySale.addActionListener(this);
 	submitSale=new JButton("Submit");
 	submitSale.addActionListener(this);
 	submitSale.setActionCommand("sale");
@@ -61,13 +64,10 @@ public class FinalProject extends JFrame implements ActionListener{
 	JPanel restockOrders=new JPanel(new GridLayout(0,1));
 	JLabel productIDLabelRestock=new JLabel("Product ID: ");
 	productIDRestock=new JTextField("",15);
-	productIDRestock.addActionListener(this);
 	JLabel quantityLabelRestock=new JLabel("Quantity: ");
 	quantityRestock=new JTextField("",15);
-	quantityRestock.addActionListener(this);
 	JLabel buyPriceLabelRestock=new JLabel("Buy Price: ");
 	buyPriceRestock=new JTextField("",15);
-	buyPriceRestock.addActionListener(this);
 	submitRestock=new JButton("Submit");
 	submitRestock.addActionListener(this);
 	submitRestock.setActionCommand("restock");
