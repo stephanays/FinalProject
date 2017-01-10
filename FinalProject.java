@@ -10,7 +10,14 @@ public class FinalProject extends JFrame implements ActionListener{
     final static String finance="Finance";
     final static int extraWindowWidth=100;
     private JButton addProduct;
-    private JLabel orderType;
+    private JTextField productNameNew;
+    private JLabel productNameNewLabel;
+    private JTextField sellPriceNew;
+    private JLabel sellPriceNewLabel;
+    private JTextField purchasePriceNew;
+    private JLabel purchasePriceNewLabel;
+    private JTextField productIDTrash;
+    private JLabel productIDTrashLabel;
     private JButton removeProduct;
     private JTextField productIDSale;
     private JTextField quantitySale;
@@ -21,6 +28,7 @@ public class FinalProject extends JFrame implements ActionListener{
     private JTextField buyPriceRestock;
     private JButton submitRestock;
     private JLabel resultRestock;
+    
 
     public void addComponentToPane(Container pane){
 	JTabbedPane tabbedPane = new JTabbedPane();
@@ -35,14 +43,30 @@ public class FinalProject extends JFrame implements ActionListener{
 	JLabel greetLabel=new JLabel("Welcome Stranger!");
 	homePage.add(greetLabel);
 
-	JPanel manageInventory=new JPanel();
+	JPanel manageInventory=new JPanel(new GridLayout(0,1));
 	addProduct=new JButton("Add Product");
 	addProduct.addActionListener(this);
 	addProduct.setActionCommand("addProduct");
 	removeProduct=new JButton("Remove Product");
 	removeProduct.addActionListener(this);
 	removeProduct.setActionCommand("removeProduct");
-	manageInventory.add(addProduct);   
+	productNameNewLabel= new JLabel("Product Name: ");
+	productNameNew=new JTextField("",15);
+	sellPriceNewLabel= new JLabel("Sell Price: ");
+	sellPriceNew=new JTextField("",15);
+	purchasePriceNewLabel= new JLabel("Purchase Price: ");
+	purchasePriceNew=new JTextField("",15);
+	productIDTrashLabel= new JLabel("Product ID: ");
+	productIDTrash=new JTextField("",15);
+	manageInventory.add(productNameNewLabel);
+	manageInventory.add(productNameNew);
+	manageInventory.add(sellPriceNewLabel);
+	manageInventory.add(sellPriceNew);
+	manageInventory.add(purchasePriceNewLabel);
+	manageInventory.add(purchasePriceNew);
+	manageInventory.add(addProduct);
+	manageInventory.add(productIDTrashLabel);
+	manageInventory.add(productIDTrash);
 	manageInventory.add(removeProduct);
 
 	JPanel saleOrders=new JPanel(new GridLayout(0,1));
@@ -109,8 +133,13 @@ public class FinalProject extends JFrame implements ActionListener{
 	    resultRestock.setText("Product ID: "+productIDRestockText+"\nQuantity: "+quantityRestockText+"\nBuy Price: "+buyPriceRestockText+"\n All Done!");
 	}
 	if(event.equals("addProduct")){
+	    String productNameNewText=productNameNew.getText();
+	    String sellPriceNewText=sellPriceNew.getText();
+	    String purchasePriceNewText=purchasePriceNew.getText();
+
 	}
 	if(event.equals("removeProduct")){
+	    String productIDTrashText=productIDTrash.getText();
 	}
     }
 	
