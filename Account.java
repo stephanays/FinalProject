@@ -19,14 +19,14 @@ public class Account{
     public void removeProduct(Product a){
 	for (int index = 0; index < inventory.size(); index++){
 	    if(inventory.get(index).getID()==a.getID()){
-		Product null = new Product(null, 0, 0, 0);
-		inventory.set(index, null);
+		Product invalid = new Product("null", 0, 0, 0);
+		inventory.set(index, invalid);
 	    }
 	}
     }
 
     public int nextId(){
-	return getInventory().size() +1;
+	return getInventory().size()+1;
     }
 
     public Product findProduct(int Id){
