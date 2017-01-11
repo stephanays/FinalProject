@@ -126,15 +126,18 @@ public class FinalProject extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e){
 	String event=e.getActionCommand();
 	if(event.equals("sale")){
-	    String productIDSaleText=productIDSale.getText();
-	    String quantitySaleText=quantitySale.getText();
-	    resultSale.setText("Product ID: "+productIDSaleText+"\nQuantity: "+quantitySaleText+"\n All Done!");
+	    int productIDSaleInt=Integer.parseInt(productIDSale.getText());
+	    int quantitySaleInt=Integer.parseInt(quantitySale.getText());
+	    Order adding=new Order(productIDSaleInt, quantitySaleInt, admin.nextSaleId());
+	    admin.newSaleOrder(adding);
+	    resultSale.setText("Product ID: "+productIDSaleInt+"\nQuantity: "+quantitySaleInt+"\n All Done!");
+	    System.out.println(admin.toStringSaleHistory());
 	}
 	if(event.equals("restock")){
-	    String productIDRestockText=productIDRestock.getText();
-	    String quantityRestockText=quantityRestock.getText();
-	    String buyPriceRestockText=buyPriceRestock.getText();
-	    resultRestock.setText("Product ID: "+productIDRestockText+"\nQuantity: "+quantityRestockText+"\nBuy Price: "+buyPriceRestockText+"\n All Done!");
+	    int productIDRestockInt=Integer.parseInt(productIDRestock.getText());
+	    int quantityRestockInt=Integer.parseInt(quantityRestock.getText());
+	    double buyPriceRestockDouble=Double.parseDouble(buyPriceRestock.getText());
+	    resultRestock.setText("Product ID: "+productIDRestockInt+"\nQuantity: "+quantityRestockInt+"\nBuy Price: "+buyPriceRestockDouble+"\n All Done!");
 	}
 	if(event.equals("addProduct")){
 	    String productNameNewText=productNameNew.getText();
@@ -142,16 +145,16 @@ public class FinalProject extends JFrame implements ActionListener{
 	    double purchasePriceNewDouble=Double.parseDouble(purchasePriceNew.getText());
 	    Product adding=new Product(productNameNewText, sellPriceNewDouble, purchasePriceNewDouble, admin.nextId());
 	    admin.newProduct(adding);
-	    inventoryStatus.setText(admin.toString());
-	    System.out.println(admin);
+	    inventoryStatus.setText(admin.toStringInventory());
+	    System.out.println(admin.toStringInventory());
 	    
 
 	}
 	if(event.equals("removeProduct")){
 	    int productIDTrashText=Integer.parseInt(productIDTrash.getText());
 	    admin.removeProduct(admin.findProduct(productIDTrashText));
-	    inventoryStatus.setText(admin.toString());
-	    System.out.println(admin);
+	    inventoryStatus.setText(admin.toStringInventory());
+	    System.out.println(admin.toStringInventory());
 	}
     }
 	

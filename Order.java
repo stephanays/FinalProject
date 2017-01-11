@@ -3,8 +3,8 @@ public class Order{
     private int productID;
     private int quantity;
 
-    public Order(int productNum, int quant){
-	orderID=001;
+    public Order(int productNum, int quant, int orderNum){
+	orderID=orderNum;
 	productID=productNum;
 	quantity=quant;
     }
@@ -34,6 +34,10 @@ public class Order{
 
     public void setQuantity(int x){
 	quantity=x;
+    }
+
+    public String toString(){
+	return orderID + ", "+productID+", "+quantity;
     }
 }
 
