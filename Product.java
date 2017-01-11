@@ -41,9 +41,9 @@ public class Product{
 	purchasePrice = price;
     }
 
-<<<<<<< HEAD
+
     public static void main(String[]args){
-	Product a = new Product("Pizza",3, 5);
+	Product a = new Product("Pizza",3, 5, 1);
 	System.out.println(a.getName());
 	System.out.println(a.getID());
 	System.out.println(a.getSellPrice());
@@ -51,11 +51,10 @@ public class Product{
 	a.setQuantity(8);
 	System.out.println(a.getQuantity());
     }
-=======
+
     public String toString(){
 	return id + ", " + name + ", " + sellPrice + ", " + purchasePrice;
     }
 
->>>>>>> Stephanie
 
 }
