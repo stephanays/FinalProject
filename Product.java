@@ -40,6 +40,9 @@ public class Product{
     public void setPurchasePrice(int price){
 	purchasePrice = price;
     }
+    public String toString(){
+	return id + ", " + name + ", " + sellPrice + ", " + purchasePrice;
+    }
 
 
     public static void main(String[]args){
@@ -51,10 +54,5 @@ public class Product{
 	a.setQuantity(8);
 	System.out.println(a.getQuantity());
     }
-
-    public String toString(){
-	return id + ", " + name + ", " + sellPrice + ", " + purchasePrice;
-    }
-
 
 }
