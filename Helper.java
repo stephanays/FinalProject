@@ -1,4 +1,4 @@
-public class Money {
+public class Helper{
     
     public static void addProfit(int x){
 	Account.setProfit(Account.getProfit()+x);
