@@ -3,6 +3,8 @@ import java.util.ArrayList;
 public class Account{
     private  ArrayList<Product> inventory = new ArrayList<Product>();
     private int profit;
+    private String username;
+    private String password;
 
     public int getProfit(){
 	return profit;
