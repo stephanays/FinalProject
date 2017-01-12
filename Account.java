@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class Account{
     private ArrayList<Product> inventory = new ArrayList<Product>();
-    private ArrayList<Order> saleHistory = new ArrayList<Order>();
-    private ArrayList<Order> restockHistory = new ArrayList<Order>();
+    private ArrayList<SaleOrder> saleHistory = new ArrayList<SaleOrder>();
+    private ArrayList<RestockOrder> restockHistory = new ArrayList<RestockOrder>();
     private int profit;
     private String username;
     private String password;
@@ -29,15 +29,17 @@ public class Account{
     public void removeProduct(Product a){
 	for (int index = 0; index < inventory.size(); index++){
 	    if(inventory.get(index).getID()==a.getID()){
-		Product invalid = new Product("null", 0, 0, 0);
+		Product invalid = new Product("null", 0, 0, 0, 0);
 		inventory.set(index, invalid);
 	    }
 	}
     }
-    public void newSaleOrder(Order a){
+    public void newSaleOrder(SaleOrder a, int productID, int quantity){
 	saleHistory.add(a);
+	int oldQuantity=inventory.get((productID-1)).getQuantity();
+	inventory.get(productID-1).setQuantity(oldQuantity - quantity);
     }
-    public void newRestockOrder(Order a){
+    public void newRestockOrder(RestockOrder a){
 	restockHistory.add(a);
     }
 
@@ -50,9 +52,9 @@ public class Account{
     public int nextRestockId(){
 	return getRestockHistory().size()+1;
     }
-    public Product findProduct(int Id){
-	return inventory.get(Id-1);
-    }
+    /*public Product findProduct(int Id){
+	return inventory.getID()-1;
+	}*/
 			     
     public String toStringInventory(){
 	String output = "";
@@ -80,12 +82,12 @@ public class Account{
     
     public static void main(String[]args){
 	Account a = new Account();
-	Product p = new Product("pizza", 5, 4.50, 1);
-	Product s = new Product("scallions", 10, 7.50, 2);
+	Product p = new Product("pizza", 5, 4.50, 1, 10);
+	Product s = new Product("scallions", 10, 7.50, 2, 10);
 	a.newProduct(p);
 	a.newProduct(s);
 	System.out.println(a.toStringInventory());
-	Product r = new Product("radish", 9.23, 4.20, 3);
+	Product r = new Product("radish", 9.23, 4.20, 3, 10);
 	a.newProduct(r);
 	System.out.println(a.toStringInventory());
 	System.out.println(a.nextId());

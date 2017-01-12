@@ -16,6 +16,8 @@ public class FinalProject extends JFrame implements ActionListener{
     private JLabel sellPriceNewLabel;
     private JTextField purchasePriceNew;
     private JLabel purchasePriceNewLabel;
+    private JTextField quantityNew;
+    private JLabel quantityNewLabel;
     private JTextField productIDTrash;
     private JLabel productIDTrashLabel;
     private JButton removeProduct;
@@ -58,6 +60,8 @@ public class FinalProject extends JFrame implements ActionListener{
 	sellPriceNew=new JTextField("",15);
 	purchasePriceNewLabel= new JLabel("Purchase Price: ");
 	purchasePriceNew=new JTextField("",15);
+	quantityNewLabel=new JLabel("Quantity: ");
+	quantityNew=new JTextField("",15);
 	productIDTrashLabel= new JLabel("Product ID: ");
 	productIDTrash=new JTextField("",15);
 	inventoryStatus= new JLabel("");
@@ -67,6 +71,8 @@ public class FinalProject extends JFrame implements ActionListener{
 	manageInventory.add(sellPriceNew);
 	manageInventory.add(purchasePriceNewLabel);
 	manageInventory.add(purchasePriceNew);
+	manageInventory.add(quantityNewLabel);
+	manageInventory.add(quantityNew);
 	manageInventory.add(addProduct);
 	manageInventory.add(productIDTrashLabel);
 	manageInventory.add(productIDTrash);
@@ -128,10 +134,11 @@ public class FinalProject extends JFrame implements ActionListener{
 	if(event.equals("sale")){
 	    int productIDSaleInt=Integer.parseInt(productIDSale.getText());
 	    int quantitySaleInt=Integer.parseInt(quantitySale.getText());
-	    Order adding=new Order(productIDSaleInt, quantitySaleInt, admin.nextSaleId());
-	    admin.newSaleOrder(adding);
+	    SaleOrder adding=new SaleOrder(productIDSaleInt, quantitySaleInt, admin.nextSaleId());
+	    admin.newSaleOrder(adding, productIDSaleInt, quantitySaleInt);
 	    resultSale.setText("Product ID: "+productIDSaleInt+"\nQuantity: "+quantitySaleInt+"\n All Done!");
 	    System.out.println(admin.toStringSaleHistory());
+	    System.out.println(admin.toStringInventory());
 	}
 	if(event.equals("restock")){
 	    int productIDRestockInt=Integer.parseInt(productIDRestock.getText());
@@ -143,7 +150,8 @@ public class FinalProject extends JFrame implements ActionListener{
 	    String productNameNewText=productNameNew.getText();
 	    double sellPriceNewDouble=Double.parseDouble(sellPriceNew.getText());
 	    double purchasePriceNewDouble=Double.parseDouble(purchasePriceNew.getText());
-	    Product adding=new Product(productNameNewText, sellPriceNewDouble, purchasePriceNewDouble, admin.nextId());
+	    int quantityNewInt=Integer.parseInt(quantityNew.getText());
+	    Product adding=new Product(productNameNewText, sellPriceNewDouble, purchasePriceNewDouble, admin.nextId(), quantityNewInt);
 	    admin.newProduct(adding);
 	    inventoryStatus.setText(admin.toStringInventory());
 	    System.out.println(admin.toStringInventory());

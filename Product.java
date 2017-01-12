@@ -7,11 +7,12 @@ public class Product{
     private double sellPrice;
     private double purchasePrice;
 
-    public Product (String inputName, double inputSell, double inputPurchase, int inputID){
+    public Product (String inputName, double inputSell, double inputPurchase, int inputID, int quantityNum){
 	name = inputName;
 	sellPrice = inputSell;
 	purchasePrice = inputPurchase;
-	id = inputID; 
+	id = inputID;
+	quantity = quantityNum;
 
     }
 
@@ -41,12 +42,12 @@ public class Product{
 	purchasePrice = price;
     }
     public String toString(){
-	return id + ", " + name + ", " + sellPrice + ", " + purchasePrice;
+	return id + ", " + name + ", " + sellPrice + ", " + purchasePrice + ", "+quantity;
     }
 
 
     public static void main(String[]args){
-	Product a = new Product("Pizza",3, 5, 1);
+	Product a = new Product("Pizza",3, 5, 1, 10);
 	System.out.println(a.getName());
 	System.out.println(a.getID());
 	System.out.println(a.getSellPrice());
