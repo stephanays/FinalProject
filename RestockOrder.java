@@ -1,16 +1,16 @@
-public class SaleOrder{
-    private int saleOrderID;
+public class RestockOrder{
+    private int restockOrderID;
     private int productID;
     private int quantity;
 
-    public SaleOrder(int productNum, int quant, int orderNum){
-	saleOrderID=orderNum;
+    public RestockOrder(int productNum, int quant, int orderNum){
+	restockOrderID=orderNum;
 	productID=productNum;
 	quantity=quant;
     }
 
     public int getOrderID(){
-	int x=saleOrderID;
+	int x=restockOrderID;
 	return x;
     }
 
@@ -25,7 +25,7 @@ public class SaleOrder{
     }
 
      public void setOrderID(int x){
-	saleOrderID=x;
+	restockOrderID=x;
     }
 
     public void setProductID(int x){
@@ -37,8 +37,7 @@ public class SaleOrder{
     }
 
     public String toString(){
-	return saleOrderID + ", "+productID+", "+quantity;
+	return restockOrderID + ", "+productID+", "+quantity;
     }
 }
 
-    
