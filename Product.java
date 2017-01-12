@@ -40,10 +40,19 @@ public class Product{
     public void setPurchasePrice(int price){
 	purchasePrice = price;
     }
-
     public String toString(){
 	return id + ", " + name + ", " + sellPrice + ", " + purchasePrice;
     }
 
+
+    public static void main(String[]args){
+	Product a = new Product("Pizza",3, 5, 1);
+	System.out.println(a.getName());
+	System.out.println(a.getID());
+	System.out.println(a.getSellPrice());
+	System.out.println(a.getPurchasePrice());
+	a.setQuantity(8);
+	System.out.println(a.getQuantity());
+    }
 
 }
