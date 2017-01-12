@@ -5,6 +5,8 @@ public class Account{
     private ArrayList<Order> saleHistory = new ArrayList<Order>();
     private ArrayList<Order> restockHistory = new ArrayList<Order>();
     private int profit;
+    private String username;
+    private String password;
 
     public int getProfit(){
 	return profit;
