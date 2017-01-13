@@ -116,7 +116,7 @@ public class FinalProject extends JFrame implements ActionListener{
 	restockOrders.add(resultRestock);
 
 	JPanel financePage=new JPanel();
-	financePage.add(new JLabel("Under Construction"));
+	financePage.add(new JLabel("Profit: "));
 
 	tabbedPane.addTab(main,homePage);
  	tabbedPane.addTab(inventory, manageInventory);
@@ -136,6 +136,7 @@ public class FinalProject extends JFrame implements ActionListener{
 	    int quantitySaleInt=Integer.parseInt(quantitySale.getText());
 	    SaleOrder adding=new SaleOrder(productIDSaleInt, quantitySaleInt, admin.nextSaleId());
 	    admin.newSaleOrder(adding, productIDSaleInt, quantitySaleInt);
+	    
 	    resultSale.setText("Product ID: "+productIDSaleInt+"\nQuantity: "+quantitySaleInt+"\n All Done!");
 	    System.out.println(admin.toStringSaleHistory());
 	    System.out.println(admin.toStringInventory());
