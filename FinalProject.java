@@ -31,6 +31,7 @@ public class FinalProject extends JFrame implements ActionListener{
     private JButton submitRestock;
     private JLabel resultRestock;
     private JLabel inventoryStatus;
+    private JLabel profitLabel;
     private Account admin = new Account();
     
 
@@ -116,7 +117,8 @@ public class FinalProject extends JFrame implements ActionListener{
 	restockOrders.add(resultRestock);
 
 	JPanel financePage=new JPanel();
-	financePage.add(new JLabel("Profit: "));
+	profitLabel=new JLabel("Profit: ");
+	financePage.add(profitLabel);
 
 	tabbedPane.addTab(main,homePage);
  	tabbedPane.addTab(inventory, manageInventory);
@@ -138,6 +140,7 @@ public class FinalProject extends JFrame implements ActionListener{
 	    admin.newSaleOrder(adding, productIDSaleInt, quantitySaleInt);
 	    
 	    resultSale.setText("Product ID: "+productIDSaleInt+"\nQuantity: "+quantitySaleInt+"\n All Done!");
+	    profitLabel.setText("Profit: "+admin.getProfit());
 	    System.out.println(admin.toStringSaleHistory());
 	    System.out.println(admin.toStringInventory());
 	}
