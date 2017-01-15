@@ -32,6 +32,14 @@ public class Helper{
 	return false;
     }
 
+    public static boolean verifyPass(String user, String pass){
+       	ArrayList<ArrayList<String>> account = new ArrayList<ArrayList<String>>
+	    (readAccount(user));
+	System.out.println (account.get(0));
+        return account.get(0).get(0).equals(pass);
+    }
+
+
     public static void newUser(String username){
 	boolean run= true;
 	for (int index = 0; index < username.length(); index++){
@@ -82,6 +90,15 @@ public class Helper{
 	    return error;
 	}
     }
+
+    // public static void updateAccount(String username){
+    // 	ArrayList<ArrayList<String>> info = new ArrayList<ArrayList<String>>
+    // 	    (readAccount(username));
+    // 	for (int action = 0; action < info.size(); action++){
+    // 	    for (int index = 0; index < info.get(action).size(); index++){
+    // 		if (info.get(action).get(index).equals("product"){
+			
+	
 	
 
     public static double cost(int quantity, double price){
@@ -95,7 +112,7 @@ public class Helper{
 	System.out.println(a.userExist("pizza"));
 	a.newUser("Mr. K");
 	System.out.println(a.readUsers());
-	System.out.println(a.readAccount("tester"));
+	System.out.println(a.verifyPass("tester","hi"));
     }
 	
 
