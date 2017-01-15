@@ -23,6 +23,17 @@ public class Account{
     public ArrayList getRestockHistory(){
 	return restockHistory;
     }
+    public String getUsername(){
+	return username;
+    }
+    public void setUsername(String name){
+	username = name;
+    }
+    public void setPassword(String pass){
+	password = pass;
+    }
+
+	
     public void newProduct(Product a){
 	inventory.add(a);
     }
