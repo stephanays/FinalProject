@@ -21,6 +21,23 @@ public class Helper{
 	return usernames;
     }
 
+    public static ArrayList<String> readAccount(String username){
+	ArrayList<String> account= new ArrayList<String>();
+	String filename = username+".txt";
+	try{
+	    Scanner sc = new Scanner(new File(filename));
+	    while (sc.hasNext()){
+		account.add(sc.next());
+	    }
+	}catch (FileNotFoundException e){
+	    System.out.println ("Invalid file name or path");
+	    System.exit(1);
+	}
+	return account;
+    }
+
+
+
     public static boolean userExist(String username){
 	ArrayList <String> users = new ArrayList <String>();
 	users = readUsers();
@@ -32,12 +49,11 @@ public class Helper{
 	return false;
     }
 
-    public static boolean verifyPass(String user, String pass){
-       	ArrayList<ArrayList<String>> account = new ArrayList<ArrayList<String>>
-	    (readAccount(user));
-	System.out.println (account.get(0));
-        return account.get(0).get(0).equals(pass);
-    }
+    // public static boolean verifyPass(String user, String pass){
+    //    	ArrayList<ArrayList<String>> account = new ArrayList<ArrayList<String>>
+    // 	    (readAccount(user));
+    //     return account.get(0).get(0).equals(pass);
+    // }
 
 
     public static void newUser(String username){
@@ -61,34 +77,27 @@ public class Helper{
 	}
     }
 
-    public static ArrayList<ArrayList<String>> readAccount(String accountName){
-	String filename= accountName+".txt";
-	try{
-	    BufferedReader reader = new BufferedReader
-		(new FileReader(filename));
+    public static void newAction(String username, String action){
 	    try{
-	    String accountInfo = reader.readLine();
-	    ArrayList<String> actions = new ArrayList<String>
-		(Arrays.asList(accountInfo.split("/")));
-	    ArrayList<ArrayList<String>> actionsArray = new ArrayList<ArrayList<String>>();
-	    for (int index = 0; index < actions.size(); index++){
-		ArrayList<String> oneAction = new ArrayList<String>
-		    (Arrays.asList(actions.get(index).split(",")));
-		actionsArray.add(oneAction);
-	    }
-	    return actionsArray;
+		String filename= username+".txt";
+		FileWriter writer = new FileWriter(filename,true);
+		writer.write("\n"+action);
+		writer.close();
 	    }
 	    catch(IOException e){
-		System.err.println("Input/Output Exception");
-		ArrayList<ArrayList<String>> error = new ArrayList<ArrayList<String>>();
-		return error;
+		System.err.println("IOException: " + e.getMessage());
 	    }
-	}
-	catch(FileNotFoundException e){
-	    System.out.println("File not found");
-	    ArrayList<ArrayList<String>> error = new ArrayList<ArrayList<String>>();
-	    return error;
-	}
+    }
+
+    public static ArrayList<ArrayList<String>> processAccount(String accountName){
+	ArrayList<String> account = new ArrayList<String>(readAccount(accountName));
+        ArrayList<ArrayList<String>> actions = new ArrayList<ArrayList<String>>();
+        for (int index = 0; index < account.size(); index++){
+    	    ArrayList<String> oneAction = new ArrayList<String>
+    		(Arrays.asList(account.get(index).split(",")));
+    	    actions.add(oneAction);
+    	}
+    	return actions;
     }
 
     // public static void updateAccount(String username){
@@ -112,7 +121,11 @@ public class Helper{
 	System.out.println(a.userExist("pizza"));
 	a.newUser("Mr. K");
 	System.out.println(a.readUsers());
-	System.out.println(a.verifyPass("tester","hi"));
+	a.newAction("tester","pizza,5,5,5");
+	a.newAction("tester","pasta,5,5,5");
+	a.newAction("tester","chili,5,5,5");	    
+	System.out.println(a.readAccount("tester"));
+	System.out.println(a.processAccount("tester"));
     }
 	
 
