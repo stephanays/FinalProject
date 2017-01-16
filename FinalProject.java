@@ -146,6 +146,8 @@ public class FinalProject extends JFrame implements ActionListener{
 	    int quantitySaleInt=Integer.parseInt(quantitySale.getText());
 	    SaleOrder adding=new SaleOrder(productIDSaleInt, quantitySaleInt, admin.nextSaleId());
 	    admin.newSaleOrder(adding, productIDSaleInt, quantitySaleInt);
+	    String id = ""+ adding.getOrderID();
+	    Helper.newAction(username, "sale,"+productIDSaleInt+","+quantitySaleInt+","+id);
 	    
 	    resultSale.setText("Product ID: "+productIDSaleInt+"\nQuantity: "+quantitySaleInt+"\n All Done!");
 	    profitLabel.setText("Profit: "+admin.getProfit());
@@ -158,6 +160,8 @@ public class FinalProject extends JFrame implements ActionListener{
 	    double buyPriceRestockDouble=Double.parseDouble(buyPriceRestock.getText());
 	    RestockOrder adding=new RestockOrder(productIDRestockInt, quantityRestockInt, admin.nextRestockId());
 	    admin.newRestockOrder(adding, productIDRestockInt, quantityRestockInt, buyPriceRestockDouble);
+	    String id = ""+adding.getOrderID();
+	    Helper.newAction(username, "restock,"+productIDRestockInt+","+quantityRestockInt+","+id+","+buyPriceRestockDouble);
 	    resultRestock.setText("Product ID: "+productIDRestockInt+"\nQuantity: "+quantityRestockInt+"\nBuy Price: "+buyPriceRestockDouble+"\n All Done!");
 	    profitLabel.setText("Profit: "+admin.getProfit());
 	    System.out.println(admin.toStringRestockHistory());
@@ -170,6 +174,12 @@ public class FinalProject extends JFrame implements ActionListener{
 	    int quantityNewInt=Integer.parseInt(quantityNew.getText());
 	    Product adding=new Product(productNameNewText, sellPriceNewDouble, purchasePriceNewDouble, admin.nextId(), quantityNewInt);
 	    admin.newProduct(adding);
+	    String name = adding.getName();
+	    String sell = ""+ adding.getSellPrice();
+	    String buy = ""+ adding.getPurchasePrice();
+	    String id = ""+adding.getID();
+	    String quantity = ""+adding.getQuantity();
+	    Helper.newAction(username, "product,"+name+","+sell+","+buy+","+id+","+quantity);
 	    inventoryStatus.setText(admin.toStringInventory());
 	    System.out.println(admin.toStringInventory());
 	    

@@ -36,12 +36,12 @@ public class Account{
 	
     public void newProduct(Product a){
 	inventory.add(a);
-	String name = a.getName();
-	String sell = ""+ a.getSellPrice();
-	String buy = ""+ a.getPurchasePrice();
-	String id = ""+a.getID();
-	String quantity = ""+a.getQuantity();
-	Helper.newAction(username, "product,"+name+","+sell+","+buy+","+id+","+quantity);
+	// String name = a.getName();
+	// String sell = ""+ a.getSellPrice();
+	// String buy = ""+ a.getPurchasePrice();
+	// String id = ""+a.getID();
+	// String quantity = ""+a.getQuantity();
+	// Helper.newAction(username, "product,"+name+","+sell+","+buy+","+id+","+quantity);
     }
     public void removeProduct(Product a){
 	for (int index = 0; index < inventory.size(); index++){
@@ -56,16 +56,16 @@ public class Account{
 	int oldQuantity=inventory.get((productID-1)).getQuantity();
 	inventory.get(productID-1).setQuantity(oldQuantity - quantity);
 	profit += Helper.cost(quantity, findProduct(productID).getSellPrice());
-	String id = ""+ a.getOrderID();
-	Helper.newAction(username, "sale,"+productID+","+quantity+","+id);
+	// String id = ""+ a.getOrderID();
+	// Helper.newAction(username, "sale,"+productID+","+quantity+","+id);
     }
     public void newRestockOrder(RestockOrder a, int productID, int quantity, double buyPrice){
 	restockHistory.add(a);
 	int oldQuantity=inventory.get((productID-1)).getQuantity();
 	inventory.get(productID-1).setQuantity(oldQuantity + quantity);
 	profit -= Helper.cost(quantity, buyPrice);
-	String id = ""+a.getOrderID();
-	Helper.newAction(username, "restock,"+productID+","+quantity+","+id+","+buyPrice);
+	// String id = ""+a.getOrderID();
+	// Helper.newAction(username, "restock,"+productID+","+quantity+","+id+","+buyPrice);
     }
 
     public int nextId(){
