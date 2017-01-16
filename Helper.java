@@ -122,17 +122,15 @@ public class Helper{
 		SaleOrder a = new SaleOrder(id, quantity, orderNum);
 		user.newSaleOrder(a, id, quantity);
 	    }
-	    // if (info.get(action).get(0).equals("restock")){
-	    // 	int id = Integer.parseInt(info.get(action).get(1));
-	    // 	int quantity = Integer.parseInt(info.get(action).get(2));
-	    // 	int orderNum = Integer.parseInt(info.get(action).get(3));
-	    // 	double price = Double.parseDouble(info.get(action).get(4));
-	    // 	RestockOrder a = new RestockOrder(id, quantity, orderNum, price);
-	    // 	user.newRestockOrder(a, id, quantity, price);
-	    // }
+	    if (info.get(action).get(0).equals("restock")){
+	    	int id = Integer.parseInt(info.get(action).get(1));
+	    	int quantity = Integer.parseInt(info.get(action).get(2));
+	    	int orderNum = Integer.parseInt(info.get(action).get(3));
+	    	double price = Double.parseDouble(info.get(action).get(4));
+	    	RestockOrder a = new RestockOrder(id, quantity, orderNum);
+	    	user.newRestockOrder(a, id, quantity, price);
+	    }
 	}
-	System.out.println(user.toStringInventory());
-	System.out.println(user.toStringSaleHistory());
     }
 		    
 			
@@ -146,20 +144,20 @@ public class Helper{
     }
 
     public static void main(String[]args){
-	Helper a = new Helper();
-	// System.out.println(a.readUsers());
-	// System.out.println(a.userExist("pizza"));
-	// a.newUser("Mr. K");
-	// System.out.println(a.readUsers());
-	// a.newAction("tester","hi");
-	// a.newAction("tester","pizza,5,5,1,4");
-	// a.newAction("tester","pasta,5,5,2,3");
-	// a.newAction("tester","chili,5,5,3,5");
-	// System.out.println(a.verifyPass("tester","hi"));
-	// System.out.println(a.readAccount("tester"));
-	// System.out.println(a.processAccount("tester"));
-	a.newAction("tester", "sale,1,2,1");
-	a.updateAccount("tester");
+	// Helper a = new Helper();
+	// // System.out.println(a.readUsers());
+	// // System.out.println(a.userExist("pizza"));
+	// // a.newUser("Mr. K");
+	// // System.out.println(a.readUsers());
+	// // a.newAction("tester","hi");
+	// // a.newAction("tester","pizza,5,5,1,4");
+	// // a.newAction("tester","pasta,5,5,2,3");
+	// // a.newAction("tester","chili,5,5,3,5");
+	// // System.out.println(a.verifyPass("tester","hi"));
+	// // System.out.println(a.readAccount("tester"));
+	// // System.out.println(a.processAccount("tester"));
+	// a.newAction("tester", "sale,1,2,1");
+	// a.updateAccount("tester");
 	
     }
 	

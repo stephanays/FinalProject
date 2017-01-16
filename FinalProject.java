@@ -148,7 +148,12 @@ public class FinalProject extends JFrame implements ActionListener{
 	    int productIDRestockInt=Integer.parseInt(productIDRestock.getText());
 	    int quantityRestockInt=Integer.parseInt(quantityRestock.getText());
 	    double buyPriceRestockDouble=Double.parseDouble(buyPriceRestock.getText());
+	    RestockOrder adding=new RestockOrder(productIDRestockInt, quantityRestockInt, admin.nextRestockId());
+	    admin.newRestockOrder(adding, productIDRestockInt, quantityRestockInt, buyPriceRestockDouble);
 	    resultRestock.setText("Product ID: "+productIDRestockInt+"\nQuantity: "+quantityRestockInt+"\nBuy Price: "+buyPriceRestockDouble+"\n All Done!");
+	    profitLabel.setText("Profit: "+admin.getProfit());
+	    System.out.println(admin.toStringRestockHistory());
+	    System.out.println(admin.toStringInventory());
 	}
 	if(event.equals("addProduct")){
 	    String productNameNewText=productNameNew.getText();
