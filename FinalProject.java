@@ -142,6 +142,18 @@ public class FinalProject extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e){
 	String event=e.getActionCommand();
 	if(event.equals("sale")){
+	    try{
+		int productIDSaleInt=Integer.parseInt(productIDSale.getText());
+	    }
+	    catch(Exception ex){
+		resultSale.setText("Product ID is not an integer");
+	    }
+	    try{
+		int quantitySaleInt=Integer.parseInt(quantitySale.getText());
+	    }
+	    catch(Exception ex){
+		resultSale.setText("Quantity is not an integer");
+	    }
 	    int productIDSaleInt=Integer.parseInt(productIDSale.getText());
 	    int quantitySaleInt=Integer.parseInt(quantitySale.getText());
 	    if(admin.checkSaleOrder(productIDSaleInt, quantitySaleInt)){
@@ -159,6 +171,24 @@ public class FinalProject extends JFrame implements ActionListener{
 	    System.out.println(admin.toStringInventory());
 	}
 	if(event.equals("restock")){
+	    try{
+		int productIDRestockInt=Integer.parseInt(productIDRestock.getText());
+	    }
+	    catch(Exception ex){
+		resultRestock.setText("Product ID is not an integer");
+	    }
+	    try{
+		int quantityRestockInt=Integer.parseInt(quantityRestock.getText());
+	    }
+	    catch(Exception ex){
+		resultRestock.setText("Quantity is not an Integer");
+	    }
+	    try{
+		double buyPriceRestockDouble=Double.parseDouble(buyPriceRestock.getText());
+	    }
+	    catch(Exception ex){
+		resultRestock.setText("Buy Price is not a number");
+	    }
 	    int productIDRestockInt=Integer.parseInt(productIDRestock.getText());
 	    int quantityRestockInt=Integer.parseInt(quantityRestock.getText());
 	    double buyPriceRestockDouble=Double.parseDouble(buyPriceRestock.getText());
@@ -177,6 +207,24 @@ public class FinalProject extends JFrame implements ActionListener{
 	}
 	if(event.equals("addProduct")){
 	    String productNameNewText=productNameNew.getText();
+	    try{
+		double sellPriceNewDouble=Double.parseDouble(sellPriceNew.getText());
+	    }
+	    catch(Exception ex){
+		inventoryStatus.setText("Sell Price is not a number");
+	    }
+	    try{
+		double purchasePriceNewDouble=Double.parseDouble(purchasePriceNew.getText());
+	    }
+	    catch(Exception ex){
+		inventoryStatus.setText("Purchase Price is not a number");
+	    }
+	    try{
+		int quantityNewInt=Integer.parseInt(quantityNew.getText());
+	    }
+	    catch(Exception ex){
+		inventoryStatus.setText("Quantity is not an integer");
+	    }
 	    double sellPriceNewDouble=Double.parseDouble(sellPriceNew.getText());
 	    double purchasePriceNewDouble=Double.parseDouble(purchasePriceNew.getText());
 	    int quantityNewInt=Integer.parseInt(quantityNew.getText());
@@ -194,6 +242,12 @@ public class FinalProject extends JFrame implements ActionListener{
 	    
 	}
 	if(event.equals("removeProduct")){
+	    try{
+		int productIDTrashText=Integer.parseInt(productIDTrash.getText());
+	    }
+	    catch(Exception ex){
+		inventoryStatus.setText("Product ID is not an integer");
+	    }
 	    int productIDTrashText=Integer.parseInt(productIDTrash.getText());
 	    admin.removeProduct(admin.findProduct(productIDTrashText));
 	    inventoryStatus.setText(admin.toStringInventory());
