@@ -40,7 +40,7 @@ public class Login extends JFrame implements ActionListener{
 	}
     }
 
-    private void createAndShowGUI(){
+    public void createAndShowGUI(){
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	this.addComponentToPane(frame.getContentPane());

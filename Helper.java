@@ -122,7 +122,6 @@ public class Helper{
 		SaleOrder a = new SaleOrder(id, quantity, orderNum);
 		user.newSaleOrder(a, id, quantity);
 	    }
-<<<<<<< HEAD
 	    if (info.get(action).get(0).equals("restock")){
 	    	int id = Integer.parseInt(info.get(action).get(1));
 	    	int quantity = Integer.parseInt(info.get(action).get(2));
@@ -132,19 +131,9 @@ public class Helper{
 	    	user.newRestockOrder(a, id, quantity, price);
 	    }
 	}
-=======
-	    // if (info.get(action).get(0).equals("restock")){
-	    // 	int id = Integer.parseInt(info.get(action).get(1));
-	    // 	int quantity = Integer.parseInt(info.get(action).get(2));
-	    // 	int orderNum = Integer.parseInt(info.get(action).get(3));
-	    // 	double price = Double.parseDouble(info.get(action).get(4));
-	    // 	RestockOrder a = new RestockOrder(id, quantity, orderNum, price);
-	    // 	user.newRestockOrder(a, id, quantity, price);
-	    // }
-	}
-	System.out.println(user.toStringInventory());
-	System.out.println(user.toStringSaleHistory());
->>>>>>> Stephanie
+
+    System.out.println(user.toStringInventory());
+    System.out.println(user.toStringSaleHistory());
     }
 		    
 			
