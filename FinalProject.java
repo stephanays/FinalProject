@@ -125,7 +125,7 @@ public class FinalProject extends JFrame implements ActionListener{
 	restockOrders.add(resultRestock);
 
 	JPanel financePage=new JPanel();
-	profitLabel=new JLabel("Profit: ");
+	profitLabel=new JLabel("Profit: "+admin.getProfit());
 	financePage.add(profitLabel);
 
 	tabbedPane.addTab(main,homePage);
@@ -142,8 +142,10 @@ public class FinalProject extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e){
 	String event=e.getActionCommand();
 	if(event.equals("sale")){
+	    
 	    int productIDSaleInt=Integer.parseInt(productIDSale.getText());
 	    int quantitySaleInt=Integer.parseInt(quantitySale.getText());
+	    
 	    if(admin.checkSaleOrder(productIDSaleInt, quantitySaleInt)){
 		SaleOrder adding=new SaleOrder(productIDSaleInt, quantitySaleInt, admin.nextSaleId());
 		admin.newSaleOrder(adding, productIDSaleInt, quantitySaleInt);
@@ -162,7 +164,8 @@ public class FinalProject extends JFrame implements ActionListener{
 	    int productIDRestockInt=Integer.parseInt(productIDRestock.getText());
 	    int quantityRestockInt=Integer.parseInt(quantityRestock.getText());
 	    double buyPriceRestockDouble=Double.parseDouble(buyPriceRestock.getText());
-	    if(checkRestockOrder(productIDRestockInt, quantityRestockInt,buyPriceRestockDouble){
+	    
+	    if(admin.checkRestockOrder(productIDRestockInt,quantityRestockInt,buyPriceRestockDouble)){
 		    RestockOrder adding=new RestockOrder(productIDRestockInt, quantityRestockInt, admin.nextRestockId());
 		    admin.newRestockOrder(adding, productIDRestockInt, quantityRestockInt, buyPriceRestockDouble);
 		    String id = ""+adding.getOrderID();
@@ -171,6 +174,7 @@ public class FinalProject extends JFrame implements ActionListener{
 		    profitLabel.setText("Profit: "+admin.getProfit());
 		}else{
 		    resultRestock.setText("Invalid Product ID or not enough money");
+	    }
 	    System.out.println(admin.toStringRestockHistory());
 	    System.out.println(admin.toStringInventory());
 	}
@@ -189,8 +193,6 @@ public class FinalProject extends JFrame implements ActionListener{
 	    Helper.newAction(username, "product,"+name+","+sell+","+buy+","+id+","+quantity);
 	    inventoryStatus.setText(admin.toStringInventory());
 	    System.out.println(admin.toStringInventory());
-	    
-
 	}
 	if(event.equals("removeProduct")){
 	    int productIDTrashText=Integer.parseInt(productIDTrash.getText());
@@ -200,11 +202,12 @@ public class FinalProject extends JFrame implements ActionListener{
 	}
     }
 	
+	
     
-
+    
     public void createAndShowGUI(){
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+	
 	this.addComponentToPane(frame.getContentPane());
 
 	frame.pack();

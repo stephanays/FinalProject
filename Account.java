@@ -51,6 +51,31 @@ public class Account{
 	    }
 	}
     }
+
+    public boolean checkSaleOrder(int productID, int quantity){
+	if (productID > inventory.size()){
+	    return false;
+	}
+	else if (quantity > inventory.get((productID-1)).getQuantity()){
+	    return false;
+	}
+	else{
+	    return true;
+	}
+    }
+
+    public boolean checkRestockOrder(int productID, int quantity, double buyPrice){
+	if (productID > inventory.size()){
+	    return false;
+	}
+	else if (Helper.cost(quantity, buyPrice) > profit){
+	    return false;
+	}
+	else{
+	    return true;
+	}
+    }
+    
     public void newSaleOrder(SaleOrder a, int productID, int quantity){
 	saleHistory.add(a);
 	int oldQuantity=inventory.get((productID-1)).getQuantity();
@@ -119,7 +144,4 @@ public class Account{
 	a.removeProduct(s);
 	System.out.println(a.toStringInventory());
     }
-    
-
-
 }
