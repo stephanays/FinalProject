@@ -152,6 +152,12 @@ public class FinalProject extends JFrame implements ActionListener{
 		String id = ""+ adding.getOrderID();
 		Helper.newAction(username, "sale,"+productIDSaleInt+","+quantitySaleInt+","+id);
 	    
+	    if(admin.checkSaleOrder(productIDSaleInt, quantitySaleInt)){
+		SaleOrder adding=new SaleOrder(productIDSaleInt, quantitySaleInt, admin.nextSaleId());
+		admin.newSaleOrder(adding, productIDSaleInt, quantitySaleInt);
+		String id = ""+ adding.getOrderID();
+		Helper.newAction(username, "sale,"+productIDSaleInt+","+quantitySaleInt+","+id);
+	    
 		resultSale.setText("Product ID: "+productIDSaleInt+"\nQuantity: "+quantitySaleInt+"\n All Done!");
 		profitLabel.setText("Profit: "+admin.getProfit());
 	    }else{
@@ -166,6 +172,7 @@ public class FinalProject extends JFrame implements ActionListener{
 	    double buyPriceRestockDouble=Double.parseDouble(buyPriceRestock.getText());
 	    
 	    if(admin.checkRestockOrder(productIDRestockInt,quantityRestockInt,buyPriceRestockDouble)){
+	    if(checkRestockOrder(productIDRestockInt, quantityRestockInt,buyPriceRestockDouble){
 		    RestockOrder adding=new RestockOrder(productIDRestockInt, quantityRestockInt, admin.nextRestockId());
 		    admin.newRestockOrder(adding, productIDRestockInt, quantityRestockInt, buyPriceRestockDouble);
 		    String id = ""+adding.getOrderID();
