@@ -51,8 +51,11 @@ public class Account{
 	inventory.get(productID-1).setQuantity(oldQuantity - quantity);
 	profit += Helper.cost(quantity, findProduct(productID).getSellPrice());
     }
-    public void newRestockOrder(RestockOrder a){
+    public void newRestockOrder(RestockOrder a, int productID, int quantity, double buyPrice){
 	restockHistory.add(a);
+	int oldQuantity=inventory.get((productID-1)).getQuantity();
+	inventory.get(productID-1).setQuantity(oldQuantity + quantity);
+	profit -= Helper.cost(quantity, buyPrice);
     }
 
     public int nextId(){
