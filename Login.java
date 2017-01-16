@@ -36,10 +36,10 @@ public class Login extends JFrame implements ActionListener{
 	    if (Helper.userExist(userNameString) &&
 		Helper.verifyPass(userNameString,passwordString)){
 		frame.setVisible(false);
-		Account loginAccount=new Account();
-		Helper.updateAccount(userNameString, loginAccount);
-		System.out.println(loginAccount.toStringInventory());
-		FinalProject initiateLogin=new FinalProject(loginAccount);
+		//Account loginAccount=new Account();
+		//Helper.updateAccount(userNameString, loginAccount);
+		//System.out.println(loginAccount.toStringInventory());
+		FinalProject initiateLogin=new FinalProject(userNameString);
 		initiateLogin.createAndShowGUI();
 	    }
 	    else{

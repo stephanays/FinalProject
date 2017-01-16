@@ -32,11 +32,15 @@ public class FinalProject extends JFrame implements ActionListener{
     private JLabel resultRestock;
     private JLabel inventoryStatus;
     private JLabel profitLabel;
-    private Account admin;
+    private JFrame frame=new JFrame("Inventory Management System");
+    private static String username;
+    private Account admin=new Account();
     
 
-    public FinalProject(Account account){
-	admin=account;
+    public FinalProject(String name){
+	username=name;
+	Helper.updateAccount(name,admin);
+	System.out.println(admin.toStringInventory());
     }
     
     public void addComponentToPane(Container pane){
@@ -181,20 +185,18 @@ public class FinalProject extends JFrame implements ActionListener{
 	
     
 
-    public static void createAndShowGUI(){
-	JFrame frame=new JFrame("Inventory Management System");
+    public void createAndShowGUI(){
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-	Account test=new Account();
-	FinalProject start=new FinalProject(test);
-	start.addComponentToPane(frame.getContentPane());
+	this.addComponentToPane(frame.getContentPane());
 
 	frame.pack();
 	frame.setVisible(true);
     }
 
     public static void main(String[] args){
-	createAndShowGUI();
+	FinalProject start=new FinalProject(username);
+	start.createAndShowGUI();
     }
 }
 	
