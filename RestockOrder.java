@@ -1,4 +1,4 @@
-epublic class RestockOrder{
+public class RestockOrder{
     private int restockOrderID;
     private int productID;
     private int quantity;
