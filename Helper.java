@@ -49,11 +49,11 @@ public class Helper{
 	return false;
     }
 
-    // public static boolean verifyPass(String user, String pass){
-    //    	ArrayList<ArrayList<String>> account = new ArrayList<ArrayList<String>>
-    // 	    (readAccount(user));
-    //     return account.get(0).get(0).equals(pass);
-    // }
+    public static boolean verifyPass(String user, String pass){
+       	ArrayList<ArrayList<String>> account = new ArrayList<ArrayList<String>>
+    	    (processAccount(user));
+        return account.get(0).get(0).equals(pass);
+    }
 
 
     public static void newUser(String username){
@@ -121,9 +121,11 @@ public class Helper{
 	System.out.println(a.userExist("pizza"));
 	a.newUser("Mr. K");
 	System.out.println(a.readUsers());
+	a.newAction("tester","hi");
 	a.newAction("tester","pizza,5,5,5");
 	a.newAction("tester","pasta,5,5,5");
-	a.newAction("tester","chili,5,5,5");	    
+	a.newAction("tester","chili,5,5,5");
+	System.out.println(a.verifyPass("tester","hi"));
 	System.out.println(a.readAccount("tester"));
 	System.out.println(a.processAccount("tester"));
     }
