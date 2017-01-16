@@ -144,13 +144,17 @@ public class FinalProject extends JFrame implements ActionListener{
 	if(event.equals("sale")){
 	    int productIDSaleInt=Integer.parseInt(productIDSale.getText());
 	    int quantitySaleInt=Integer.parseInt(quantitySale.getText());
-	    SaleOrder adding=new SaleOrder(productIDSaleInt, quantitySaleInt, admin.nextSaleId());
-	    admin.newSaleOrder(adding, productIDSaleInt, quantitySaleInt);
-	    String id = ""+ adding.getOrderID();
-	    Helper.newAction(username, "sale,"+productIDSaleInt+","+quantitySaleInt+","+id);
+	    if(admin.checkSaleOrder(productIDSaleInt, quantitySaleInt)){
+		SaleOrder adding=new SaleOrder(productIDSaleInt, quantitySaleInt, admin.nextSaleId());
+		admin.newSaleOrder(adding, productIDSaleInt, quantitySaleInt);
+		String id = ""+ adding.getOrderID();
+		Helper.newAction(username, "sale,"+productIDSaleInt+","+quantitySaleInt+","+id);
 	    
-	    resultSale.setText("Product ID: "+productIDSaleInt+"\nQuantity: "+quantitySaleInt+"\n All Done!");
-	    profitLabel.setText("Profit: "+admin.getProfit());
+		resultSale.setText("Product ID: "+productIDSaleInt+"\nQuantity: "+quantitySaleInt+"\n All Done!");
+		profitLabel.setText("Profit: "+admin.getProfit());
+	    }else{
+		resultSale.setText("Invalid Product ID or not enough in stock");
+	    }
 	    System.out.println(admin.toStringSaleHistory());
 	    System.out.println(admin.toStringInventory());
 	}
@@ -158,12 +162,15 @@ public class FinalProject extends JFrame implements ActionListener{
 	    int productIDRestockInt=Integer.parseInt(productIDRestock.getText());
 	    int quantityRestockInt=Integer.parseInt(quantityRestock.getText());
 	    double buyPriceRestockDouble=Double.parseDouble(buyPriceRestock.getText());
-	    RestockOrder adding=new RestockOrder(productIDRestockInt, quantityRestockInt, admin.nextRestockId());
-	    admin.newRestockOrder(adding, productIDRestockInt, quantityRestockInt, buyPriceRestockDouble);
-	    String id = ""+adding.getOrderID();
-	    Helper.newAction(username, "restock,"+productIDRestockInt+","+quantityRestockInt+","+id+","+buyPriceRestockDouble);
-	    resultRestock.setText("Product ID: "+productIDRestockInt+"\nQuantity: "+quantityRestockInt+"\nBuy Price: "+buyPriceRestockDouble+"\n All Done!");
-	    profitLabel.setText("Profit: "+admin.getProfit());
+	    if(checkRestockOrder(productIDRestockInt, quantityRestockInt,buyPriceRestockDouble){
+		    RestockOrder adding=new RestockOrder(productIDRestockInt, quantityRestockInt, admin.nextRestockId());
+		    admin.newRestockOrder(adding, productIDRestockInt, quantityRestockInt, buyPriceRestockDouble);
+		    String id = ""+adding.getOrderID();
+		    Helper.newAction(username, "restock,"+productIDRestockInt+","+quantityRestockInt+","+id+","+buyPriceRestockDouble);
+		    resultRestock.setText("Product ID: "+productIDRestockInt+"\nQuantity: "+quantityRestockInt+"\nBuy Price: "+buyPriceRestockDouble+"\n All Done!");
+		    profitLabel.setText("Profit: "+admin.getProfit());
+		}else{
+		    resultRestock.setText("Invalid Product ID or not enough money");
 	    System.out.println(admin.toStringRestockHistory());
 	    System.out.println(admin.toStringInventory());
 	}
