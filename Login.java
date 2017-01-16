@@ -33,14 +33,22 @@ public class Login extends JFrame implements ActionListener{
 	if(event.equals("login")){
 	    String userNameString=userName.getText();
 	    String passwordString=password.getText();
-	    frame.setVisible(false);
-	    Account loginAccount=new Account();
-	    FinalProject initiateLogin=new FinalProject(loginAccount);
-	    initiateLogin.createAndShowGUI();
+	    if (Helper.userExist(userNameString) &&
+		Helper.verifyPass(userNameString,passwordString)){
+		frame.setVisible(false);
+		Account loginAccount=new Account();
+		Helper.updateAccount(userNameString, loginAccount);
+		System.out.println(loginAccount.toStringInventory());
+		FinalProject initiateLogin=new FinalProject(loginAccount);
+		initiateLogin.createAndShowGUI();
+	    }
+	    else{
+		System.out.println("Wrong username or password");
+	    }
 	}
     }
 
-    private void createAndShowGUI(){
+    public void createAndShowGUI(){
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	this.addComponentToPane(frame.getContentPane());
