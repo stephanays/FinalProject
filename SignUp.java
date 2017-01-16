@@ -33,12 +33,13 @@ public class SignUp extends JFrame implements ActionListener{
 	if(event.equals("signup")){
 	    String userNameSignUpString=userNameSignUp.getText();
 	    String passwordSignUpString=passwordSignUp.getText();
-	    //if statement for whether the username is available
-	    //if its: code that add the username to the text
-	    frame.setVisible(false);
-	    Login toLogin=new Login();
-	    toLogin.createAndShowGUI();
-	    
+	    if (!Helper.userExist(userNameSignUpString)){
+		Helper.newAction(userNameSignUpString, passwordSignUpString);
+		Helper.newUser(userNameSignUpString);
+		frame.setVisible(false);
+		Login toLogin=new Login();
+		toLogin.createAndShowGUI();
+	    } 
 	}
     }
 
