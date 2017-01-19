@@ -125,7 +125,7 @@ public class FinalProject extends JFrame implements ActionListener{
 	restockOrders.add(resultRestock);
 
 	JPanel financePage=new JPanel();
-	profitLabel=new JLabel("Profit: ");
+	profitLabel=new JLabel("Profit: "+admin.getProfit());
 	financePage.add(profitLabel);
 
 	tabbedPane.addTab(main,homePage);
