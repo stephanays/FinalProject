@@ -2,3 +2,6 @@ tester
 Stephanie
 Michela
 pizza
+tester1
+cat
+help
