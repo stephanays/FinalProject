@@ -15,6 +15,9 @@ Features to test:
 Unresolved bugs:
 If you put an invalid type input (letters instead of numbers) in more than one field, the code breaks. The program still continues to run but the code won't do anything. (didn't know how to prevent that)
 
+Resolved Bug:
+In the fixedBug branch we fixed the profit bug and it should keep a memory of your profit. c;
+
 How to compile and run:
 Compile and run SignUp.java to create a new account when you start and you will be automatically directed to login. After you have an account, if you close the program and want to log back in compile and run Login.java.
 
